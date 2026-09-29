@@ -13,7 +13,6 @@ public class main {
 		ArrayList<Integer> yearList=new ArrayList<Integer>();
 		ArrayList<Double> gpaList=new ArrayList<Double>();
 		
-		double totalGPA=0;
 		int menu=-1;
 		do {
 			if(nameList.isEmpty())
@@ -73,9 +72,10 @@ public class main {
 					gpa=scan.nextDouble();
 				}
 				gpaList.add(gpa);
-				totalGPA=totalGPA+gpa;
 				
 				System.out.println("Press enter to continue.. ");
+				scan.nextLine();
+				scan.nextLine();
 				break;
 				
 			case 2:
@@ -105,7 +105,6 @@ public class main {
 							System.out.println("==============================");
 						}
 						System.out.println("Press enter to continue.. ");
-						totalGPA=totalGPA-gpaList.get(remove-1);
 					}
 					else System.out.println("There is no student data in that data number");
 				}
@@ -128,6 +127,7 @@ public class main {
 						System.out.printf("GPA: %.2f%n", gpaList.get(index));
 						System.out.println();
 						System.out.println("Press enter to continue.. ");
+						scan.nextLine();
 					}
 					else
 						System.out.println("Student data not found");	
@@ -136,10 +136,18 @@ public class main {
 				
 			case 4:
 				double average=0;
-				average=totalGPA/nameList.size();
+				double totalGPA=0;
+				
+				for(int i=0; i<gpaList.size(); i++)
+				{
+					totalGPA=totalGPA+gpaList.get(i);
+				}
+				average=totalGPA/gpaList.size();
+				
 				System.out.printf("Average GPA of %d students: %f", nameList.size(), average);
 				System.out.println();
 				System.out.println("Press enter to continue.. ");
+				scan.nextLine();
 				break;
 				
 			}
